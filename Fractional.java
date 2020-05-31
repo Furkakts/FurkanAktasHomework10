@@ -184,3 +184,91 @@ public class Fractional {
 		return numerator + "/" + denominator;
 	}
 }
+
+package fractionaltesting;
+
+public class Fractional {
+	public final long numerator;
+	public final long denominator;
+	public final char operationIndicator; // Using for switch-case    N:isNan   I:isInfinity
+	public static final String NotANumber = "Not a Number";
+	public static final String PositiveInfinity = "+Infinity";
+	public static final String NegativeInfinity = "-Infinity";
+	
+	Fractional(long numerator, long denominator,char operationIndicator) {	
+		this.numerator = numerator;
+		this.denominator = denominator;
+		this.operationIndicator = operationIndicator;
+	}
+	
+	
+	// Not a Number (NaN) 
+	boolean isNaN() {
+		double isNaN = (double)numerator/denominator;
+		
+		if(Double.isNaN(isNaN)) {
+		   return true;
+		}else { return false; }
+	}
+
+	boolean isInfinity() {
+		double isInfinite = (double)numerator/denominator;
+		
+		if (Double.isInfinite(isInfinite)) {
+			return true;
+		}else { return false; }
+		
+	}
+	
+	static int sign(long numerator, long denominator) {
+        double result = (double)numerator/denominator;
+		
+		if(result>0) {
+			return 1;
+		}else if(result == 0) { 
+			return 0;
+		}else { return -1; }
+	
+	}
+	
+	int sign() {
+		double result = (double)numerator/denominator;
+		
+		if(result>0) {
+			return 1;
+		}else if(result == 0) { 
+			return 0;
+		}else { return -1; }
+		
+	}
+
+	double getValue() {
+		return (double)numerator / denominator;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		
+		String result = "";
+		
+		switch(operationIndicator) {
+		   case 'N':
+		      result = isNaN()? NotANumber : "A Number";
+		      break;
+		      
+		   case 'I':
+			   result = isInfinity()? (numerator>0? PositiveInfinity : NegativeInfinity) : "Not Infinite";
+			   break;
+		  
+		   default:
+			   if(denominator == 1) {
+				   result = Long.toString(numerator);
+			   } else { result = numerator + "/" + denominator; }
+	     }	  
+		return result;
+	}		
+		
+}
+
