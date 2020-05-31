@@ -157,14 +157,7 @@ public class Fractional {
 				return false;
 			}			
 			
-			Fractional fractional1 = simplify();
-			Fractional fractional2 = fractional.simplify();
 			
-			return (fractional1.toString().equals(fractional2.toString()));
-		}
-		else
-			return false;
-	}
 	
 	@Override
 	public boolean equals(Object obj) {
