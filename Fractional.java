@@ -160,15 +160,6 @@ public class Fractional {
 			
 	
 	@Override
-	public boolean equals(Object obj) {
-		Fractional ratNumber = (Fractional)obj;
-		
-		if (ratNumber.numerator == ratNumber.denominator){
-			return true;
-		}else { return false; }
-	} 
-	
-	@Override
 	public String toString() {
 		if (isNaN()) {
 			return NotANumber;
